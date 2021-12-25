@@ -3,6 +3,6 @@ image:
   file: .gitpod.php7.2-Dockerfile
 tasks:
   - init: |
-      echo 'TODO: build project'
+      composer install
     command: |
       echo 'TODO: start app'

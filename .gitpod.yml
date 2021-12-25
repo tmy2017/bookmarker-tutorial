@@ -4,5 +4,8 @@ image:
 tasks:
   - init: |
       composer install
+    # fix authentication "The server requested authentication method unknown to the client"
+    #   thanks to https://stackoverflow.com/questions/52364415/php-with-mysql-8-0-error-the-server-requested-authentication-method-unknown-to 
     command: |
+      mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';"
       bin/cake server

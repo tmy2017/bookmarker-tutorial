@@ -5,4 +5,4 @@ tasks:
   - init: |
       composer install
     command: |
-      echo 'TODO: start app'
+      bin/cake server

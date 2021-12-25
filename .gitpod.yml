@@ -1,0 +1,6 @@
+image: php:7.4-cli
+tasks:
+  - init: |
+      echo 'TODO: build project'
+    command: |
+      echo 'TODO: start app'

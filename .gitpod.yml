@@ -8,4 +8,8 @@ tasks:
     #   thanks to https://stackoverflow.com/questions/52364415/php-with-mysql-8-0-error-the-server-requested-authentication-method-unknown-to 
     command: |
       mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';"
+      mysql -e "create database my_app"
+      mysql -D my_app < config/schema/app.sql 
+      mysql -D my_app < config/schema/i18n.sql 
+      mysql -D my_app < config/schema/sessions.sql 
       bin/cake server

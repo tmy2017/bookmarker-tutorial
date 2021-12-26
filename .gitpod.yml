@@ -4,9 +4,9 @@ image:
   #   details:  https://github.com/cakephp/cakephp/issues/10862
   file: .gitpod.php7.1-Dockerfile
 tasks:
-  # not forget to -y so prebuild will not stuck!
+  # not forget to --no-interaction  so prebuild will not stuck!
   - init: |
-      composer install -y
+      composer install --no-interaction 
     # fix authentication "The server requested authentication method unknown to the client"
     #   thanks to https://stackoverflow.com/questions/52364415/php-with-mysql-8-0-error-the-server-requested-authentication-method-unknown-to 
     command: |

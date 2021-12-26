@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
+
 
 /**
  * Bookmarks Controller
@@ -36,6 +38,8 @@ class BookmarksController extends AppController
      */
     public function view($id = null)
     {
+        // print_r($_COOKIE);
+        print_r(Configure::read('Session'));
         $bookmark = $this->Bookmarks->get($id, [
             'contain' => ['Users', 'Tags']
         ]);

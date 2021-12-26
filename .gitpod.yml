@@ -15,4 +15,8 @@ tasks:
       mysql -D my_app < config/schema/app.sql 
       mysql -D my_app < config/schema/i18n.sql 
       mysql -D my_app < config/schema/sessions.sql 
-      bin/cake server
+      bin/cake server -p 8765
+ports:
+  - port: 8765
+    onOpen: open-preview
+    visibility: private

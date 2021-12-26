@@ -30,8 +30,12 @@
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
         }
     },
+    "__comment__": "due to php7.1 signature change, need to manual patch chronos, also tried downgrade to php5,6, but mysql really gave me hard time #   with `Connection to database could not be established: SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client`",
     "scripts": {
-        "post-install-cmd": "App\\Console\\Installer::postInstall",
+        "post-install-cmd": [
+            "App\\Console\\Installer::postInstall",
+            "cp .gitpod.simple-patch-FronzeTimeTrait.php vendor/cakephp/chronos/src/Traits/FrozenTimeTrait.php"
+        ],
         "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
     },
     "minimum-stability": "dev",

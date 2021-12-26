@@ -16,6 +16,8 @@ tasks:
       mysql -D my_app < config/schema/i18n.sql 
       mysql -D my_app < config/schema/sessions.sql 
       bin/cake server -p 8765
+  # open the real tutorial part - username and pwd in readme.md
+  - command: gp preview --external `gp url 8765`/bookmarks
 ports:
   - port: 8765
     onOpen: open-preview

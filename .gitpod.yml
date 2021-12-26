@@ -9,15 +9,16 @@ tasks:
       composer install --no-interaction 
     # fix authentication "The server requested authentication method unknown to the client"
     #   thanks to https://stackoverflow.com/questions/52364415/php-with-mysql-8-0-error-the-server-requested-authentication-method-unknown-to 
+    # open the real tutorial part - username and pwd in readme.md
+    #   tried to put in another terminal but seems it will impact mysql? hence now in the same terminal
     command: |
       mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';"
       mysql -e "create database my_app"
       mysql -D my_app < config/schema/app.sql 
       mysql -D my_app < config/schema/i18n.sql 
       mysql -D my_app < config/schema/sessions.sql 
-      bin/cake server -p 8765
-  # open the real tutorial part - username and pwd in readme.md
-  - command: gp preview --external `gp url 8765`/bookmarks
+      bin/cake server -p 8765 &
+      gp preview --external `gp url 8765`/bookmarks
 ports:
   - port: 8765
     onOpen: open-preview

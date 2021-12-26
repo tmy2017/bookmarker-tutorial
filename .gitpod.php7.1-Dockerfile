@@ -14,7 +14,6 @@ RUN php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa7
 # NOTE: force install v1 since this cakephp 3 is in composer v1 era. If use composer v2 and install, will see:
 #   "Loading "cakephp/plugin-installer" which is a legacy composer-installer built for Composer 1.x, it is likely to cause issues as you are running Composer 2.x.
 #   and cake server will see `Plugin Migrations could not be found. in [/workspace/bookmarker-tutorial/vendor/cakephp/cakephp/src/Core/Plugin.php, line 149]`
-Generating autoload files
 RUN sudo php composer-setup.php --1 --install-dir /usr/bin --filename composer
 RUN php -r "unlink('composer-setup.php');"
 USER gitpod

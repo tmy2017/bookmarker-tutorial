@@ -55,3 +55,7 @@ COPY --from=ide /home/gitpod/.projector/ /home/gitpod/.projector/
 COPY --from=ide /home/gitpod/.config/JetBrains/ /home/gitpod/.config/JetBrains/ 
 COPY --from=ide /home/gitpod/.local/share/JetBrains/ /home/gitpod/.local/share/JetBrains/
 COPY --from=ide /home/gitpod/.java/.userPrefs/jetbrains/ /home/gitpod/.java/.userPrefs/jetbrains/
+# also 3 custom commands to be copied
+COPY --from=ide /usr/local/bin/tmy-persist-ide-settings-through-image-for-gitpod /usr/local/bin/tmy-persist-ide-settings-through-image-for-gitpod
+COPY --from=ide /usr/local/bin/tmy-persist-custom-commands-through-image /usr/local/bin/tmy-persist-custom-commands-through-image
+COPY --from=ide /usr/local/bin/tmy-pstorm-launch-GITPOD_REPO_ROOT /usr/local/bin/tmy-pstorm-launch-GITPOD_REPO_ROOT

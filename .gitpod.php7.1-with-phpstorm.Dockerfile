@@ -58,16 +58,11 @@ RUN brew install drud/ddev/ddev
 # after phpstorm all installed, now copy the artifacts from previous FROM to restore IDE settings
 #   NOTE: MUST NOT be before 'projector ide autoinstall' - will cause error for it 
 COPY --from=ide /home/gitpod/.projector/ /home/gitpod/.projector/
+# NOTE: .config removal of license related info like phpstorm.key is already done in tmy2017/gitpod-pm image when 
+#   persisting ide changes, hence can safely copy whole .config directory
 COPY --from=ide /home/gitpod/.config/JetBrains/ /home/gitpod/.config/JetBrains/ 
 COPY --from=ide /home/gitpod/.local/share/JetBrains/ /home/gitpod/.local/share/JetBrains/
 
-### Now trial expires, start to provide real license, but still need to persist IDE settings hence need the following
-
-# do NOT persist .java since after trial expires and real license provided, this could contain license info
-#   COPY --from=ide /home/gitpod/.java/.userPrefs/jetbrains/ /home/gitpod/.java/.userPrefs/jetbrains/
-# delete license related info in .config folder
-#   use -f to skip error
-RUN rm -f /home/gitpod/.config/JetBrains/PhpStorm2021.2/phpstorm.key
 
 ### Custom useful commands 
 # also 3 custom commands to be copied

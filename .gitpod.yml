@@ -1,5 +1,5 @@
 # directly pull image, instead of building it by Dockerfile
-image: tmy2017/gitpod-pstorm-with-php71-mysql8:ver-1640846949
+image: tmy2017/gitpod-pstorm-with-php71-mysql8:ver-1640894563
 tasks:
   # not forget to --no-interaction  so prebuild will not stuck!
   # NOTE: 

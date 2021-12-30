@@ -2,18 +2,21 @@
 image: tmy2017/gitpod-pstorm-with-php71-mysql8:ver-1640846949
 tasks:
   # not forget to --no-interaction  so prebuild will not stuck!
+  # NOTE: 
+  #  1) actually mysql data is in /workspace folder, hence it is persisted and should be put in init part
+  #    also workspace restart should not re-run these db seeding commands.
+  #  2) fix authentication "The server requested authentication method unknown to the client"
+  #   thanks to https://stackoverflow.com/questions/52364415/php-with-mysql-8-0-error-the-server-requested-authentication-method-unknown-to 
   - init: |
       composer install --no-interaction 
-    # fix authentication "The server requested authentication method unknown to the client"
-    #   thanks to https://stackoverflow.com/questions/52364415/php-with-mysql-8-0-error-the-server-requested-authentication-method-unknown-to 
-    # open the real tutorial part - username and pwd in readme.md
-    #   tried to put in another terminal but seems it will impact mysql? hence now in the same terminal
-    command: |
       mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';"
       mysql -e "create database my_app"
       mysql -D my_app < config/schema/app.sql 
       mysql -D my_app < config/schema/i18n.sql 
       mysql -D my_app < config/schema/sessions.sql 
+    # open the real tutorial part - username and pwd in readme.md
+    #   tried to put in another terminal but seems it will impact mysql? hence now in the same terminal
+    command: |
       bin/cake server -p 8765 &
       gp preview --external `gp url 8765`/bookmarks
 ports:

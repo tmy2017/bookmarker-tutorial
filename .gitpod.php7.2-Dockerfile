@@ -1,3 +1,9 @@
+## README
+# seems NOT in use! (28-Jan-2022T09-48+0100)
+# pls go below for newest 
+#   https://github.com/tmy2017/php-ddd-example/blob/main/.gitpod.gitpod-php71-mysql8.Dockerfile
+## -- END --
+
 FROM gitpod/workspace-mysql
 
 USER root

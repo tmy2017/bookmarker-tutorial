@@ -1,3 +1,9 @@
+## README
+# seems NOT in use! (28-Jan-2022T09-48+0100)
+# pls go below for newest 
+#   https://github.com/tmy2017/php-ddd-example/blob/main/.gitpod.gitpod-php71-mysql8.Dockerfile
+## -- END --
+
 # use multi-stage build to copy artifact of ide related files to "real base image" (the image next)
 #   https://docs.docker.com/develop/develop-images/multistage-build/#name-your-build-stages 
 #   NOTE: COPY --from=ide MUST be after projector install, hence it's at the end
